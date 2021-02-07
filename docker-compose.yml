@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  trino-coordinator:
+    image: trinodb/trino
+    restart: always
+    ports:
+      - 8087:8080
+    container_name: trino-coordinator
+    volumes:
+      - ./coordinator/etc:/etc/trino
+
+  trino-node1:
+    image: trinodb/trino
+    restart: always
+    container_name: trino-node1
+    ports:
+      - 8081:8080
+    volumes:
+      - ./node/etc:/etc/trino
+
+  # trino-node2:
+  #   image: trinodb/trino
+  #   restart: always
+  #   container_name: trino-node2
+  #   ports:
+  #     - 8082:8080
+  #   volumes:
+  #     - ./node/etc:/etc/trino
+
+
+
+networks: 
+  
+  default: 
+    external: 
+      name: datafuel-local-network
+     

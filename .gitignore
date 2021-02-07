@@ -1,0 +1,4 @@
+data/minio/data/.minio.sys/
+data/minio/data/datalake-bucket/
+data/minio/config/
+.env
